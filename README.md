@@ -8,3 +8,4 @@ Allows the user to add, remove, edit and display contacts.
 - Include a Framework for JS
 - Search bar
 - Read JSON file with contacts
+- Implementing all git features on VSCode and tying out GitLens and Git History Extensions.
