@@ -1,0 +1,17 @@
+{
+  "name": "vodafone-homework",
+  "version": "1.0.0",
+  "description": "Contact list app using webpack",
+  "main": "script.js",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "build:dev": "webpack-dev-server"
+  },
+  "author": "Ernesto Tzompantzi",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "4.46.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1"
+  }
+}
