@@ -56,6 +56,13 @@ body{
   cursor: pointer;
 }
 
+
+.main-table-container{
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+}
+
 .contact{
   display: inline-block;
 }
@@ -98,6 +105,7 @@ body{
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
+  z-index: 1;
 }
 
 footer{
@@ -138,19 +146,22 @@ footer{
 #main-container{
   margin-top: 15px;
 }
-#contactName-Lbl, #contactEmail-Lbl, #contactPhone-Lbl{
+.view-contact-lbl{
+  display: inline-block;
   color: grey;
   margin-left: 42%;
   margin-top: 15px;
 }
 
 #contactName-text{
+  display: inline-block;
   color: black;
   margin-left: 2%;
   margin-top: 15px;
 }
 
 #contactEmail-text, #contactPhone-text{
+  display: inline-block;
   color: red;
   margin-left: 2%;
   margin-top: 15px;

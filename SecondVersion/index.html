@@ -8,11 +8,57 @@
     <link rel="stylesheet" href="src/sass/style.css">
   </head>
   <body>
+    <template id="contact">
+      <div class="col-md-4 contact">
+        <h3 class="contact-name"></h3>
+        <div class="contact-info">
+          <p id="contact-info-email"></p>
+          <p id="contact-info-phone"></p>
+        </div>
+      </div>
+    </template>
+    <template id="contact-view-info"> 
+      <div class="col-md-12">
+        <div class="contact-row">
+          <label class="view-contact-lbl">Name:</label>
+          <p id="contactName-text">Ernesto Tzompantzi</p>
+        </div>
+        <div class="contact-row">
+          <label class="view-contact-lbl">E-mail:</label>
+          <p id="contactEmail-text">ernesto.tzompantzi@vodafone.com</p>
+        </div>
+        <div class="contact-row">
+          <label class="view-contact-lbl">Phone:</label>
+          <p id="contactPhone-text">+36704000565</p>
+        </div>
+        <button id="deleteContact-Btn" class="btn btn-light">Delete</button>
+        <button id="editContact-Btn" class="btn btn-light">Edit</button>
+      </div>
+    </template>
+    <template id="contact-edit-info"> 
+      <div class="col-md-12">
+        <div class="contact-row">
+          <label class="view-contact-lbl">Name:</label>
+          <input id="editName-Input"></input>
+        </div>
+        <div class="contact-row">
+          <label class="view-contact-lbl">E-mail:</label>
+          <input id="editEmail-Input"></input>
+        </div>
+        <div class="contact-row">
+          <label class="view-contact-lbl">Phone:</label>
+          <input id="editPhone-Input"></input>
+        </div>
+        <button id="saveContact-Btn" class="btn btn-light">Save Contact</button>
+      </div>
+    </template>
     <header>
       <div class="row">
         <div class="col-md-6">
           <div class="container">
-            <img class="logo"src="./src/images/vodafone_logo.svg" alt="vodafone_logo">
+            <a href="./index.html">
+              <img class="logo"src="./src/images/vodafone_logo.svg" alt="vodafone_logo">
+            </a>
           </div>
         </div>
         <div class="col-md-6">
@@ -32,17 +78,13 @@
 <!-- Filter with letters -->
     <div class="col-md-12">
       <div id="filter-table">
-        <div id="filter-body">
-          <ul id="lettersFilter">
-            <li>A</li>
-            <li>B</li>
-          </ul>
-        </div>
+        <div id="filter-body"></div>
       </div>
     </div>
 <!-- Main body  -->
     <div id="main-table-container">
-      <div id="main-table-body"></div>
+      <div class="row", id="contacts-body">
+      </div>
     </div>
     <button type="button" class="btn btn-light" id="add-btn">+</button>
     <footer>

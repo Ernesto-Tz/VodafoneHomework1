@@ -8,7 +8,7 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
     publicPath: 'dist'
   },
-  devServer: { //Fpr the development server
+  devServer: { //For the development server
     static: {
       directory: path.join(__dirname), // Here we define where is the index.html
     },

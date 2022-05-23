@@ -1,18 +1,14 @@
 import tempContacts from './Utility/contacts.js'
+import {lettersFilterObj} from  './App/lettersFilterObj.js'
+import { contactsLoaderObj } from './App/contactsLoader.js';
 
-console.log(tempContacts);
+const lettersFilter = new lettersFilterObj(tempContacts);
+lettersFilter.displayLettersFilter();
 
-function createLettersFilter () {
-   const lettersFilter = [];
-   for (var i = 0; i < tempContacts.length; i++) {
-      if(i == 0){
-         lettersFilter.push(tempContacts[i].name[0].toUpperCase());
-      }
-      else if (!lettersFilter.includes(tempContacts[i].name[0].toUpperCase())) {
-         lettersFilter.push(tempContacts[i].name[0].toUpperCase());
-      }
-   }
-   console.log(lettersFilter);
-}
+contactsLoaderObj.displayContacts(tempContacts);
 
-createLettersFilter();
+const addLtlBtn = document.querySelector('#add-btn');
+addLtlBtn.addEventListener('click', () =>{
+    // console.log('I am trying to go to another page')
+    window.location.href = './newContact.html';
+});
