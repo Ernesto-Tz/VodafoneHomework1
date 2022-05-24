@@ -4,6 +4,9 @@ import {lettersFilterObj} from  './lettersFilterObj.js'
 export class contactsLoaderObj {
     
     static displayContacts(currentContacts) {
+        const lettersFilter = new lettersFilterObj(currentContacts);
+        lettersFilter.displayLettersFilter();
+
         const contactsContainer = document.getElementById('main-table-container');
         const contactsTemplate = document.getElementById('contact');
         const newContactsBody = document.createElement('div');
@@ -34,15 +37,8 @@ export class contactsLoaderObj {
     }
 
     static displaySingleContact(contact) {
-        //1. Get title, addButton and filter nodes to be modified.
-        const titleCenter = document.getElementById('header-title');
-        const docFilt = document.getElementById('filter-body');
-        const addLitleBtn = document.getElementById('add-btn');
-        titleCenter.innerHTML = contact.name + "'s Profile";
-        docFilt.style.display = 'none';
-        addLitleBtn.style.display = 'none';
+        this.titlesToggle(contact.name + "'s Profile",'none','none');
 
-        //2. Modified template and delete old body
         const contactsBody = document.getElementById('contacts-body');
         const contactTemplate = document.getElementById('contact-view-info');
         const contactElemnt = document.importNode(contactTemplate.content, true);
@@ -66,12 +62,7 @@ export class contactsLoaderObj {
     }
 
     static updateContactsView (currentContacts) {
-        const titleCenter = document.getElementById('header-title');
-        const docFilt = document.getElementById('filter-body');
-        const addLitleBtn = document.getElementById('add-btn');
-        titleCenter.innerHTML = 'Contacts';
-        docFilt.style.display = 'flex';
-        addLitleBtn.style.display = 'inline-block';
+        this.titlesToggle('Contacts','flex','inline-block');
 
         const lettersFilter = new lettersFilterObj(currentContacts);
         lettersFilter.displayLettersFilter();
@@ -91,5 +82,29 @@ export class contactsLoaderObj {
             this.updateContactsView(newList);
         });
         contactsBody.replaceChildren(contactElemnt);
+    }
+
+    static newContactView (){
+        this.titlesToggle('Add new Contact','none','none');
+
+        const contactsBody = document.getElementById('contacts-body');
+        const contactTemplate = document.getElementById('new-contact-view');
+        const contactElemnt = document.importNode(contactTemplate.content, true);
+        contactElemnt.getElementById('addContact-Btn').addEventListener('click', () =>{
+            const newList = contactObj.addNewContact();
+            this.updateContactsView(newList);
+        });
+        contactsBody.replaceChildren(contactElemnt);
+
+    }
+
+    static titlesToggle(titleText, filterDisplay, addBtnDisplay){
+        //1. Get title, addButton and filter nodes to be modified.
+        const titleCenter = document.getElementById('header-title');
+        const docFilt = document.getElementById('filter-body');
+        const addLitleBtn = document.getElementById('add-btn');
+        titleCenter.innerHTML = titleText;
+        docFilt.style.display = filterDisplay;
+        addLitleBtn.style.display = addBtnDisplay;
     }
 }

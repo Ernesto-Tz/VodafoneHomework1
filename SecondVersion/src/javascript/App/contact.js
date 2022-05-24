@@ -2,17 +2,17 @@ import tempContacts from '../Utility/contacts.js'
 
 export class contactObj {
 
-  static addNewContact(name, email, phone) {
+  static addNewContact() {
       const newPersonName = document.getElementById('NewName-Input').value;
       const newPersonEmail = document.getElementById('NewEmail-Input').value;
       const newPersonPhone = document.getElementById('NewPhone-Input').value;
-      if(name === ''){
+      if(newPersonName === ''){
         alert('Insert Name');
       }
-      else if (email === '') {
+      else if (newPersonEmail === '') {
         alert('Insert Email');
       }
-      else if (phone === '') {
+      else if (newPersonPhone === '') {
         alert('Insert Phone');
       }
       else if(newPersonName !== '' && newPersonEmail !== '' && newPersonPhone !== ''){

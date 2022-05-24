@@ -122,7 +122,7 @@ footer{
 
 /* Add Contact view*/
 
-#NewName-Input, #NewEmail-Input, #NewPhone-Input{
+#NewName-Input, #NewEmail-Input, #NewPhone-Input {
   width: 70%;
   margin: 5px 10% 5px 15%;
   padding:7px;
@@ -130,7 +130,8 @@ footer{
   position: relative;
   border-width: thin;
 }
-#newName-Lbl , #newEmail-Lbl, #newPhone-Lbl{
+
+.newName-Lb {
   margin: 5px 10% 5px 15%;
 }
 

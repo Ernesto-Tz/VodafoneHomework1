@@ -41,7 +41,7 @@ export class lettersFilterObj {
                       newContactsList.push(contact)
                     }
                 }
-                contactsLoaderObj.displayContacts(newContactsList);
+                contactsLoaderObj.updateContactsView(newContactsList);
             });
         }
     }
