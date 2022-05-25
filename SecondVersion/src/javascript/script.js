@@ -8,3 +8,8 @@ const addLtlBtn = document.querySelector('#add-btn');
 addLtlBtn.addEventListener('click', () =>{
     contactsLoaderObj.newContactView();
 });
+
+const searchBar = document.querySelector('#nameSearchBar');
+searchBar.addEventListener('input', event => {
+    contactsLoaderObj.searchName(event.target.value.toLowerCase(),tempContacts);
+});

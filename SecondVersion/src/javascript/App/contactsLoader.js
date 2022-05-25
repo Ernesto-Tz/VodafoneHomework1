@@ -37,7 +37,7 @@ export class contactsLoaderObj {
     }
 
     static displaySingleContact(contact) {
-        this.titlesToggle(contact.name + "'s Profile",'none','none');
+        this.titlesToggle(contact.name + "'s Profile",'none','none','none');
 
         const contactsBody = document.getElementById('contacts-body');
         const contactTemplate = document.getElementById('contact-view-info');
@@ -65,7 +65,7 @@ export class contactsLoaderObj {
         const contactsNameList = document.getElementsByClassName('contact-name');
         
         for (const contactEl of contactsNameList) {
-            const contact = contactsList.find(c => c.name ===contactEl.innerHTML)
+            const contact = contactsList.find(c => c.name === contactEl.innerHTML)
             if(contact.showing === 'FALSE') {
                 contactEl.parentNode.style.display = 'none';
             } else {
@@ -74,8 +74,23 @@ export class contactsLoaderObj {
         }
     }
 
+    static searchName(value, contactsList){
+        const contactsNameList = document.getElementsByClassName('contact-name');
+        
+        for (const contactEl of contactsNameList) {
+            const isShown = contactEl.innerHTML.toLowerCase().includes(value);
+            const contact = contactsList.find(c => c.name === contactEl.innerHTML);
+            contact.showing = 'FALSE'
+            contactEl.parentNode.style.display = 'none';
+            if(isShown) {
+                contactObj.toggleDisplay(contact);
+                contactEl.parentNode.style.display = 'inline-block';
+            } 
+        }
+    }
+
     static updateContactsView (currentContacts) {
-        this.titlesToggle('Contacts','flex','inline-block');
+        this.titlesToggle('Contacts','flex','inline-block','block');
 
         const lettersFilter = new lettersFilterObj(currentContacts);
         lettersFilter.displayLettersFilter();
@@ -98,7 +113,7 @@ export class contactsLoaderObj {
     }
 
     static newContactView (){
-        this.titlesToggle('Add new Contact','none','none');
+        this.titlesToggle('Add new Contact','none','none','none');
 
         const contactsBody = document.getElementById('contacts-body');
         const contactTemplate = document.getElementById('new-contact-view');
@@ -111,13 +126,15 @@ export class contactsLoaderObj {
 
     }
 
-    static titlesToggle(titleText, filterDisplay, addBtnDisplay){
+    static titlesToggle(titleText, filterDisplay, addBtnDisplay,searchBarDis){
         //1. Get title, addButton and filter nodes to be modified.
         const titleCenter = document.getElementById('header-title');
         const docFilt = document.getElementById('filter-body');
         const addLitleBtn = document.getElementById('add-btn');
+        const searchBar = document.getElementById('nameSearchBar');
         titleCenter.innerHTML = titleText;
         docFilt.style.display = filterDisplay;
         addLitleBtn.style.display = addBtnDisplay;
+        searchBar.style.display = searchBarDis;
     }
 }

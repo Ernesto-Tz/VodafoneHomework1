@@ -57,15 +57,20 @@ body{
 }
 
 
-.main-table-container{
+#main-table-container{
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
 }
 
+#contacts-body{
+  padding: 50px 0 50px 250px ;
+}
+
 .contact{
   display: inline-block;
 }
+
 .contact-name{
   background-color: black;
   color: white;
@@ -124,7 +129,7 @@ footer{
 
 #NewName-Input, #NewEmail-Input, #NewPhone-Input {
   width: 70%;
-  margin: 5px 10% 5px 15%;
+  margin: 5px 10% 5px 10%;
   padding:7px;
   border-radius: 5px;
   position: relative;
@@ -132,13 +137,13 @@ footer{
 }
 
 .newName-Lb {
-  margin: 5px 10% 5px 15%;
+  margin: 5px 10% 5px 10%;
 }
 
 #addContact-Btn{
   background-color: white;
   border-color: black;
-  margin-left: 45%;
+  margin-left: 35%;
   margin-top: 15px;
 }
 
@@ -150,7 +155,7 @@ footer{
 .view-contact-lbl{
   display: inline-block;
   color: grey;
-  margin-left: 42%;
+  margin-left: 30%;
   margin-top: 15px;
 }
 
@@ -179,7 +184,7 @@ footer{
   background-color: white;
   color: red;
   border-color: red;
-  margin-left: 45%;
+  margin-left: 35%;
   margin-top: 15px;
 }
 
@@ -206,6 +211,6 @@ footer{
 #saveContact-Btn{
   background-color: white;
   border-color: black;
-  margin-left: 45%;
+  margin-left: 38%;
   margin-top: 15px;
 }
