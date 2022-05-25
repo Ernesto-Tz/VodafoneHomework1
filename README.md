@@ -9,6 +9,9 @@ Additional tools are used on different versions.
 
 - Version 2:   
     Using webpack and Modules and HTML templates.
+    
+    Node version 14.16.0
+
     To run the application: 
     1. `npm install`
     2. `npm run build`
