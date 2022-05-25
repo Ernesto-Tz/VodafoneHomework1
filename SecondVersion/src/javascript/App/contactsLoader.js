@@ -61,6 +61,19 @@ export class contactsLoaderObj {
         contactsBody.replaceChildren(contactElemnt);
     }
 
+    static filterContactsView(contactsList){        
+        const contactsNameList = document.getElementsByClassName('contact-name');
+        
+        for (const contactEl of contactsNameList) {
+            const contact = contactsList.find(c => c.name ===contactEl.innerHTML)
+            if(contact.showing === 'FALSE') {
+                contactEl.parentNode.style.display = 'none';
+            } else {
+                contactEl.parentNode.style.display = 'inline-block';
+            }
+        }
+    }
+
     static updateContactsView (currentContacts) {
         this.titlesToggle('Contacts','flex','inline-block');
 

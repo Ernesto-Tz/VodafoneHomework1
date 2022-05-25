@@ -1,4 +1,5 @@
 import { contactsLoaderObj } from './contactsLoader.js';
+import {contactObj} from './contact.js'
 
 export class lettersFilterObj {
 
@@ -35,13 +36,13 @@ export class lettersFilterObj {
             newTableBody.appendChild(currentElement);
             // Create event listener
             currentElement.addEventListener('click', event => {
-                const newContactsList = [];
                 for (const contact of this.contactsList) {
-                    if (contact.name[0].toUpperCase() == event.target.innerHTML) {
-                      newContactsList.push(contact)
+                    contact.showing = 'FALSE';
+                    if (contact.name[0].toUpperCase() === event.target.innerHTML) {
+                        contactObj.toggleDisplay(contact);
                     }
                 }
-                contactsLoaderObj.updateContactsView(newContactsList);
+                contactsLoaderObj.filterContactsView(this.contactsList);
             });
         }
     }

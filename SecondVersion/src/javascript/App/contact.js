@@ -19,7 +19,8 @@ export class contactObj {
         const newPerson = {
         'name' : newPersonName,
         'phone': newPersonPhone,
-        'email': newPersonEmail
+        'email': newPersonEmail,
+        'showing': 'TRUE'
         }
         tempContacts.push(newPerson);
         return tempContacts;
@@ -47,7 +48,8 @@ export class contactObj {
       const newPerson ={
       'name' : newPersonName,
       'phone': newPersonPhone,
-      'email': newPersonEmail
+      'email': newPersonEmail,
+      'showing': 'TRUE'
       }
       tempContacts[index] = newPerson;
       return tempContacts;
@@ -58,5 +60,14 @@ export class contactObj {
     const index = tempContacts.indexOf(contact);
     tempContacts.splice(index,1);
     return tempContacts;
+  }
+
+  static toggleDisplay(contact){
+    const index = tempContacts.indexOf(contact);
+    if(tempContacts[index].showing === 'FALSE') {
+      tempContacts[index].showing = 'TRUE'
+    } else {
+      tempContacts[index].showing = 'FALSE'
+    }
   }
 }
