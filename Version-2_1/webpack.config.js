@@ -5,7 +5,7 @@ module.exports = {
   mode: 'development',
   entry: {
     // Since entry is an object we can use multiple entry points.
-    bundle: path.resolve(__dirname, 'src/index.js'),
+    bundle: path.resolve(__dirname, 'src/index.ts'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -24,14 +24,22 @@ module.exports = {
       {
         test:/\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
-      }
+      },
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
     ]
+  },
+  resolve: {
+    extensions: ['.tsx', '.ts', '.js'],
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'New App',//we can call this title dinamically point 4.
-      filename: 'index.html',//filename of the output
-      template: 'src/main.html'//entry point, template to start from
+      title: 'New App', // we can call this title dynamically (point 4).
+      filename: 'index.html', // filename of the output
+      template: 'src/main.html' // entry point, template to start from
     }),
   ]
 };

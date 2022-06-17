@@ -21,8 +21,8 @@ Additional tools are used on different versions.
         The webpack server has a problem on the developer mode. It is not picking up changes, I need to rebuild manually.
 
 - Version 2.1:   
-    Using webpack and Modules and HTML templates.
-    Fix server issue and use SASS, BABEL plugins.
+    Using webpack, Modules and HTML templates.   
+    To-DO: Fix server issue and use SASS, BABEL plugins and TypeScript
 
     To run the application: 
     1. `npm install`
