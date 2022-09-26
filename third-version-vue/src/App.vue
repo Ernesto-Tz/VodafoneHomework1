@@ -1,24 +1,21 @@
 <template>
   <div>
     <the-header></the-header>
-    <title-bar></title-bar>
-    <contacts-stored></contacts-stored>
+    <contacts-render></contacts-render>
     <the-footer></the-footer>
   </div>
 </template>
 
 <script>
 import TheHeader from "./components/TheHeader.vue";
-import TitleBar from "./components/TitleBar.vue";
-import ContactsStored from './components/ContactsStored.vue';
+import ContactsRender from "./components/ContactsRender.vue";
 import TheFooter from './components/TheFooter.vue'
 
 export default {
   name: "App",
   components: {
     TheHeader,
-    TitleBar,
-    ContactsStored,
+    ContactsRender,
     TheFooter
   }
 };

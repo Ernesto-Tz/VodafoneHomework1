@@ -1,30 +1,28 @@
 <template>
-  <ul>
-  </ul>
+  <div class="container">
+    <contact-card
+      v-for="contact in contacts"
+      :key="contact.name"
+      :name="contact.name"
+      :phone="contact.phone"
+      :email="contact.email"
+    ></contact-card>
+  </div>
 </template>
 
 <script>
-import tempContacts from "../utils/contacts.js";
+import ContactCard from "./ContactCard.vue";
 
 export default {
-  data() {
-    return {
-      contacts: tempContacts,
-    };
+  components: {
+    ContactCard,
   },
-  methods: {
-    showCont() {
-      this.contacts.forEach((e) => {
-        console.log(e.name);
-      });
-    },
-  },
-  mounted() {
-    this.showCont();
-  },
+  inject: ["contacts"],
 };
 </script>
 
 <style scoped>
-
+.container {
+  margin: 0 auto;
+}
 </style>
