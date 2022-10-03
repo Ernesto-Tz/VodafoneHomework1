@@ -1,5 +1,5 @@
 <template>
-  <div class="col-md-4 contact">
+  <div class="col-md-4 contact" v-if="showing">
     <div class="contact-name">
       {{ name }}
     </div>
@@ -12,16 +12,16 @@
 
 <script>
 export default {
-  props: ['name', 'email', 'phone']
-}
+  props: ["name", "email", "phone", "showing"],
+};
 </script>
 
 <style scoped>
-.contact{
+.contact {
   display: inline-block;
 }
 
-.contact-name{
+.contact-name {
   background-color: black;
   color: white;
   height: 40px;
@@ -33,7 +33,7 @@ export default {
   box-shadow: 2px 2px 5px 1px #888888;
   cursor: pointer;
 }
-.contact-info{
+.contact-info {
   background-color: white;
   color: black;
   height: 80px;

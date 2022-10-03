@@ -6,6 +6,7 @@
       :name="contact.name"
       :phone="contact.phone"
       :email="contact.email"
+      :showing="contact.showing"
     ></contact-card>
   </div>
 </template>

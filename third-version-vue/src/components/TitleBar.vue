@@ -7,7 +7,7 @@
     </div>
     <div class="underline-contacts"></div>
     <div class="col-md-12 filter-table">
-      <div class="filter-element" v-for="letter in lettersArray" :key="letter">
+      <div class="filter-element" v-for="letter in lettersArray" :key="letter" @click="filtering(letter)">
         {{ letter }}
       </div>
     </div>
@@ -17,6 +17,7 @@
 <script>
 export default {
   inject: ["contacts"],
+  emits: ['filtering'],
   data() {
     return {
       lettersArray: [],
@@ -35,6 +36,9 @@ export default {
       }
       this.lettersArray.sort();
     },
+    filtering(letter) {
+      this.$emit('filtering',letter)
+    }
   },
   mounted() {
     this.createFilterArray();

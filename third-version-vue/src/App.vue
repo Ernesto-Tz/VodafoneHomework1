@@ -7,9 +7,9 @@
 </template>
 
 <script>
-import TheHeader from "./components/TheHeader.vue";
+import TheHeader from "./components/UI/TheHeader.vue";
 import ContactsRender from "./components/ContactsRender.vue";
-import TheFooter from './components/TheFooter.vue'
+import TheFooter from './components/UI/TheFooter.vue'
 
 export default {
   name: "App",

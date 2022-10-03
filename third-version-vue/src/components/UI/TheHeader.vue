@@ -4,7 +4,7 @@
       <a href="#">
         <img
           class="logo"
-          src="../assets/vodafone_logo.svg"
+          src="../../assets/vodafone_logo.svg"
           alt="vodafone_logo"
         />
       </a>
