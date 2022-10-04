@@ -18,8 +18,8 @@
         <div id="contactPhone-text">{{email}}</div>
       </div>
       <div class="crud-btns">
-        <button type="button" class="btn deleteContact-Btn"> Delete</button>
-        <button type="button" class="btn editContact-Btn"> Edit</button>
+        <button type="button" class="btn deleteContact-Btn" @click="deleteContact"> Delete</button>
+        <button type="button" class="btn editContact-Btn" @click="editContact"> Edit</button>
       </div>
     </div>
   </div>
@@ -27,7 +27,16 @@
 
 <script>
 export default {
-  props: ['name', 'phone', 'email']
+  props: ['id','name', 'phone', 'email'],
+  emits: ['delete-contact'],
+  methods : {
+    deleteContact(){
+      this.$emit('delete-contact')
+    },
+    editContact(){
+      this.$emit('edit-contact');
+    }
+  }
 };
 </script>
 
