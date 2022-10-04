@@ -1,8 +1,15 @@
 <template>
   <div>
     <title-bar v-if="!contactSelected" @filtering="filterSelected"></title-bar>
-    <contacts-stored></contacts-stored>
-    <contact-details v-if="contactSelected"></contact-details>
+    <contacts-stored
+      v-if="!contactSelected"
+      @contact-selected="contactDetails"
+    ></contacts-stored>
+    <contact-details v-if="contactSelected"
+    :name="selectedContact.name"
+    :phone="selectedContact.phone"
+    :email="selectedContact.email"></contact-details>
+    <button type="button" class="btn add-btn" v-if="!contactSelected">+</button>
   </div>
 </template>
 
@@ -23,6 +30,7 @@ export default {
       contacts: tempContacts,
       // contactsToRender: [],
       contactSelected: false,
+      selectedContact: {}
     };
   },
   provide() {
@@ -33,13 +41,17 @@ export default {
   methods: {
     filterSelected(letter) {
       console.log(letter);
-      this.contacts.forEach(el => {
-        if(el.name[0].toUpperCase() === letter) {
+      this.contacts.forEach((el) => {
+        if (el.name[0].toUpperCase() === letter) {
           el.showing = true;
         } else {
           el.showing = false;
         }
       });
+    },
+    contactDetails(id) {
+      this.contactSelected = true;
+      this.selectedContact = this.contacts.find(el => el.id === id);
     },
     // initContactsRendered() {
     //   this.contacts.forEach((e) => {
@@ -66,5 +78,22 @@ export default {
 <style scoped>
 div {
   margin: 20px auto;
+}
+
+.add-btn{
+  background-color: red;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  position: fixed;
+  bottom: 7rem;
+  right: 7rem;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
 }
 </style>

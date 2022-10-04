@@ -2,11 +2,13 @@
   <div class="container">
     <contact-card
       v-for="contact in contacts"
-      :key="contact.name"
+      :key="contact.id"
+      :id="contact.id"
       :name="contact.name"
       :phone="contact.phone"
       :email="contact.email"
       :showing="contact.showing"
+      @select-contact="contactSelected"
     ></contact-card>
   </div>
 </template>
@@ -19,6 +21,11 @@ export default {
     ContactCard,
   },
   inject: ["contacts"],
+  methods: {
+    contactSelected(id){
+      this.$emit('contact-selected',id)
+    }
+  }
 };
 </script>
 

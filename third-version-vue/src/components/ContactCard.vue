@@ -1,6 +1,6 @@
 <template>
-  <div class="col-md-4 contact" v-if="showing">
-    <div class="contact-name">
+  <div class="col-lg-4 col-md-6 contact" v-if="showing">
+    <div class="contact-name" @click="selectContact(id)">
       {{ name }}
     </div>
     <div class="contact-info">
@@ -12,7 +12,13 @@
 
 <script>
 export default {
-  props: ["name", "email", "phone", "showing"],
+  props: ["id","name", "email", "phone", "showing"],
+  emits: ['select-contact'],
+  methods: {
+    selectContact(id){
+      this.$emit('select-contact', id);
+    }
+  }
 };
 </script>
 
