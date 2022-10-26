@@ -1,25 +1,25 @@
 <template>
   <div class="container">
     <div class="col-md-12 text-center">
-      <div id="header-title">{{name}}'s Contact</div>
+      <div id="header-title">{{ name }}'s Contact</div>
     </div>
     <div class="underline-contacts"></div>
     <div class="col-md-12 text-center">
       <div class="contact-row">
         <label for="contactName-text" class="contact-Label">Name:</label>
-        <div id="contactName-text">{{name}}</div>
+        <div id="contactName-text">{{ name }}</div>
       </div>
       <div class="contact-row">
         <label for="contactEmail-text" class="contact-Label">Phone:</label>
-        <div id="contactEmail-text">{{phone}}</div>
+        <div id="contactEmail-text">{{ phone }}</div>
       </div>
       <div class="contact-row">
         <label for="contactPhone-text" class="contact-Label">Email:</label>
-        <div id="contactPhone-text">{{email}}</div>
+        <div id="contactPhone-text">{{ email }}</div>
       </div>
       <div class="crud-btns">
-        <button type="button" class="btn deleteContact-Btn" @click="deleteContact"> Delete</button>
-        <button type="button" class="btn editContact-Btn" @click="editContact"> Edit</button>
+        <button type="button" class="btn deleteContact-Btn">Delete</button>
+        <button type="button" class="btn editContact-Btn">Edit</button>
       </div>
     </div>
   </div>
@@ -27,16 +27,34 @@
 
 <script>
 export default {
-  props: ['id','name', 'phone', 'email'],
-  emits: ['delete-contact'],
-  methods : {
-    deleteContact(){
-      this.$emit('delete-contact')
+  inject: ["contacts"],
+  props: ["contactId"],
+  data() {
+    return {
+      name: "",
+      phone: "",
+      email: "",
+    };
+  },
+  methods: {
+    deleteContact() {
+      this.$emit("delete-contact");
     },
-    editContact(){
-      this.$emit('edit-contact');
-    }
-  }
+    editContact() {
+      this.$emit("edit-contact");
+    },
+    loadContact(contactId) {
+      console.log(contactId);
+      console.log(this.contacts);
+      const selectedContact = this.contacts.find(c => c.id === parseInt(contactId));
+      this.name = selectedContact.name;
+      this.phone = selectedContact.phone;
+      this.email = selectedContact.email;
+    },
+  },
+  created() {
+    this.loadContact(this.contactId);
+  },
 };
 </script>
 

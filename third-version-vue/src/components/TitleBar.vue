@@ -17,7 +17,6 @@
 <script>
 export default {
   inject: ["contacts"],
-  emits: ['filtering'],
   data() {
     return {
       lettersArray: [],
@@ -37,7 +36,13 @@ export default {
       this.lettersArray.sort();
     },
     filtering(letter) {
-      this.$emit('filtering',letter)
+      this.contacts.forEach((el) => {
+        if (el.name[0].toUpperCase() === letter) {
+          el.showing = true;
+        } else {
+          el.showing = false;
+        }
+      });
     }
   },
   mounted() {

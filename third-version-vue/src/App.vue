@@ -1,23 +1,34 @@
 <template>
   <div>
     <the-header></the-header>
-    <contacts-render></contacts-render>
+    <main>
+      <router-view></router-view>
+    </main>
     <the-footer></the-footer>
   </div>
 </template>
 
 <script>
+import tempContacts from "./utils/contacts.js";
 import TheHeader from "./components/UI/TheHeader.vue";
-import ContactsRender from "./components/ContactsRender.vue";
 import TheFooter from './components/UI/TheFooter.vue'
 
 export default {
   name: "App",
   components: {
     TheHeader,
-    ContactsRender,
     TheFooter
-  }
+  },
+  data() {
+    return {
+      contacts: tempContacts
+    };
+  },
+  provide() {
+    return {
+      contacts: this.contacts,
+    };
+  },
 };
 </script>
 

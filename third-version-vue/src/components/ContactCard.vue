@@ -1,8 +1,6 @@
 <template>
   <div class="col-lg-4 col-md-6 contact" v-if="showing">
-    <div class="contact-name" @click="selectContact(id)">
-      {{ name }}
-    </div>
+    <router-link class="contact-name" :to="'/contacts/details/'+id">{{ name }}</router-link>
     <div class="contact-info">
       <p>{{ email }}</p>
       <p>{{ phone }}</p>
@@ -12,13 +10,7 @@
 
 <script>
 export default {
-  props: ["id","name", "email", "phone", "showing"],
-  emits: ['select-contact'],
-  methods: {
-    selectContact(id){
-      this.$emit('select-contact', id);
-    }
-  }
+  props: ["id","name", "email", "phone", "showing"]
 };
 </script>
 
@@ -28,6 +20,8 @@ export default {
 }
 
 .contact-name {
+  text-decoration: none;
+  display: inline-block;
   background-color: black;
   color: white;
   height: 40px;
