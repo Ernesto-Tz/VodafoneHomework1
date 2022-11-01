@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="col-md-12 text-center">
-      <div id="header-title">Edit {{ name }}'s contact</div>
+      <div id="header-title">Edit Contact</div>
     </div>
     <div class="underline-contacts"></div>
     <div class="col-md-12 text-center">
@@ -18,7 +18,7 @@
         <input type="text" id="editName-Input" v-model="contactEmail">
       </div>
       <div class="crud-btns">
-        <button type="button" class="btn editContact-Btn">Save</button>
+        <button type="button" class="btn saveContact-Btn" @click="saveContact">Save</button>
       </div>
     </div>
   </div>
@@ -26,19 +26,32 @@
 
 <script>
 export default {
-  props: ["id", "name", "phone", "email"],
-  emits: ["save-contact"],
+  inject: ["contacts"],
+  props: ["contactId"],
   data(){
     return {
-      contactName: this.name,
-      contactEmail: this.email,
-      contactPhone: this.phone
+      contactName: '',
+      contactEmail: '',
+      contactPhone: ''
     }
   },
   methods: {
-    deleteContact() {
-      this.$emit("save-contact");
+    loadContact(contactId) {
+      const selectedContact = this.contacts.find(c => c.id === parseInt(contactId));
+      this.contactName = selectedContact.name;
+      this.contactPhone = selectedContact.phone;
+      this.contactEmail = selectedContact.email;
     },
+    saveContact() {
+      const selectedContact = this.contacts.find(c => c.id === parseInt(this.contactId));
+      selectedContact.name = this.contactName;
+      selectedContact.phone = this.contactPhone;
+      selectedContact.email = this.contactEmail;
+      this.$router.push('/contacts');
+    }
+  },
+  created() {
+    this.loadContact(this.contactId);
   },
 };
 </script>
@@ -87,7 +100,5 @@ export default {
 .saveContact-Btn {
   background-color: white;
   border-color: black;
-  margin-left: 45%;
-  margin-top: 15px;
 }
 </style>
