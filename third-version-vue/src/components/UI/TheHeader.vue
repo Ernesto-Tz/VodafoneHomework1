@@ -1,13 +1,13 @@
 <template>
   <header class="row">
     <div class="col-md-6">
-      <a href="#">
+      <router-link to="/contacts">
         <img
           class="logo"
           src="../../assets/vodafone_logo.svg"
           alt="vodafone_logo"
         />
-      </a>
+      </router-link>
     </div>
     <div class="col-md-6 float-right">
       <input
