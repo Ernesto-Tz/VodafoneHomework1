@@ -12,7 +12,7 @@
         :showing="contact.showing"
       ></contact-card>
     </div>
-    <button type="button" class="btn add-btn">+</button>
+    <router-link class="add-btn" to='/contacts/add'>+</router-link>
   </div>
 </template>
 
@@ -27,10 +27,6 @@ export default {
   },
   inject: ["contacts"],
   methods: {
-    contactSelected(id) {
-      const contSelected = this.contacts.find((el) => el.id === id);
-      console.log(contSelected);
-    },
     // contactDetails(id) {
     //   this.contactSelected = true;
     //   this.selectedContact = this.contacts.find((el) => el.id === id);
@@ -61,6 +57,8 @@ div {
   margin: 0 auto;
 }
 .add-btn {
+  text-decoration: none;
+  display: inline-block;
   background-color: red;
   color: white;
   text-align: center;
