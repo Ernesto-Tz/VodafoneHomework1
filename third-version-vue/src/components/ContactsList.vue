@@ -25,27 +25,7 @@ export default {
     TitleBar,
     ContactCard,
   },
-  inject: ["contacts"],
-  methods: {
-    // contactDetails(id) {
-    //   this.contactSelected = true;
-    //   this.selectedContact = this.contacts.find((el) => el.id === id);
-    //   // selectedContact is just a pointer the actual contact inside the array.
-    // },
-    // deleteContact() {
-    //   const index = this.contacts.indexOf(this.selectedContact);
-    //   this.contacts.splice(index, 1);
-    //   this.selectedContact = {};
-    //   this.contactSelected = false;
-    //   this.contacts.forEach((el) => {
-    //     el.showing = true;
-    //   });
-    // },
-    // editContactView() {
-    //   this.editContact = true;
-    //   this.contactSelected = false;
-    // },
-  },
+  inject: ["contacts"]
 };
 </script>
 

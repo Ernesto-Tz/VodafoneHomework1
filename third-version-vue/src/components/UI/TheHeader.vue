@@ -1,13 +1,12 @@
 <template>
   <header class="row">
     <div class="col-md-6">
-      <router-link to="/contacts">
-        <img
-          class="logo"
-          src="../../assets/vodafone_logo.svg"
-          alt="vodafone_logo"
-        />
-      </router-link>
+      <img
+        class="logo"
+        src="../../assets/vodafone_logo.svg"
+        alt="vodafone_logo"
+        @click="reloadAllContacts"
+      />
     </div>
     <div class="col-md-6 float-right">
       <input
@@ -15,10 +14,48 @@
         type="text"
         name="search"
         placeholder="Search for name"
+        v-model="searchInput"
       />
     </div>
   </header>
 </template>
+
+<script>
+export default {
+  inject: ["contacts"],
+  data(){
+    return{
+      searchInput: ''
+    }
+  },
+  methods: {
+    reloadAllContacts() {
+      for(const contact of this.contacts) {
+        contact.showing = true;
+      }
+      this.$router.push("/contacts");
+    },
+    searching(){
+      for (const contact of this.contacts) {
+        const contName = contact.name.toLowerCase();
+        if(contName.includes(this.searchInput.toLowerCase())){
+          contact.showing = true;
+        } else {
+          contact.showing = false;
+        }
+      }
+    }
+  },
+  watch: {
+    searchInput() {
+      this.searching();
+    }
+  },
+  created() {
+    this.searching();
+  }
+};
+</script>
 
 <style scoped>
 header {
@@ -43,6 +80,7 @@ header {
   position: relative;
   left: 40px;
   bottom: 5px;
+  cursor: pointer;
 }
 
 input {
