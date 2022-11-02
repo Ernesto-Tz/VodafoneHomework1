@@ -20,16 +20,12 @@ Additional tools are used on different versions.
     Problems: The bootstrap version is old.
         The webpack server has a problem on the developer mode. It is not picking up changes, I need to rebuild manually.
 
-- Version 2.1:   
-    Using webpack, Modules and HTML templates.   
-    To-DO: Fix server issue and use SASS, BABEL plugins and TypeScript
-
-    To run the application: 
-    1. `npm install`
-    2. `npm run build`
-    3. `npm run build:dev`
-
 
 - Version 3:
     Using Vue structure.
+
+    To run the application: 
+    1. `npm install`
+    2. `npm run serve`
+    
 
