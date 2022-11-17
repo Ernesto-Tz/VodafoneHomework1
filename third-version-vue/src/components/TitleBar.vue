@@ -74,5 +74,10 @@ export default {
 .filter-element {
   margin-right: 3rem;
   cursor: pointer;
+  transition: color 200ms ease-out;
+}
+
+.filter-element:hover {
+  color: red;
 }
 </style>
