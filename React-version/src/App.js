@@ -1,18 +1,17 @@
-import { Fragment } from "react";
-
+import ContactsProvider from "./Store/ContactsProvider";
 import Header from "./Layout/Header/Header";
 import Footer from "./Layout/Footer/Footer";
 import ContactsList from "./Contacts/ContactsList";
 
 function App() {
   return (
-    <Fragment>
+    <ContactsProvider>
       <Header />
       <main>
         <ContactsList />
       </main>
       <Footer />
-    </Fragment>
+    </ContactsProvider>
   );
 }
 
