@@ -2,6 +2,7 @@ import { useContext } from "react";
 
 import ContactsContext from "../Store/contacts-context.js";
 import ContactItem from "./ContactItem.js";
+// import TitleBar from "../Layout/TitleBar/TitleBar.js";
 import classes from "./ContactsList.module.css";
 
 const ContactsList = (props) => {
@@ -12,9 +13,9 @@ const ContactsList = (props) => {
       {contactsCtx.contacts.map((item) => (
         <ContactItem
           key={item.id}
-          name={item.name}
-          email={item.email}
-          phone={item.phone}
+          id = {item.id}
+          contact = {item}
+          onClick={props.contactViewActive}
         />
       ))}
     </ul>
@@ -22,6 +23,7 @@ const ContactsList = (props) => {
 
   return (
     <div className={`${classes.container}`}>
+      {/* <TitleBar contacts={contactsCtx.contacts}/> */}
       <div className={`${classes.contacts}`}>
         {list}
       </div>
