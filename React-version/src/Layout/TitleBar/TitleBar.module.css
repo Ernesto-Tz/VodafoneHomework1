@@ -1,0 +1,28 @@
+.header-title {
+  font-size: 40px;
+  font-weight: 600;
+}
+.underline-contacts {
+  content: "";
+  height: 3px;
+  width: 5%;
+  background-color: red;
+  margin-left: 48%;
+}
+.filter-table {
+  font-size: 30px;
+  margin-top: 10px;
+  padding-left: 35%;
+  font-weight: 400;
+  visibility: visible;
+  display: flex;
+}
+.filter-element {
+  margin-right: 3rem;
+  cursor: pointer;
+  transition: color 200ms ease-out;
+}
+
+.filter-element:hover {
+  color: red;
+}
