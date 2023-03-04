@@ -9,7 +9,6 @@ const ContactItem = props => {
 
   const contactViewHandler = () => {
     contCtx.displayItem({...props.contact});
-    console.log(contCtx.displayedContact);
     props.onClick();
   }
 
