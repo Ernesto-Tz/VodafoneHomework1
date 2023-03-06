@@ -8,13 +8,26 @@ const ContactsProvider = (props) => {
   const [displayedContact, setDisplayedContact] = useState({});
 
   const addItemHandler = (item) => {};
-  const editItemHandler = (item) => {};
-  const displayItemHandler = (item) => {
-    setDisplayedContact(prevState => ({
-      ...item
-    }));
+
+  const editItemHandler = (item) => {
+    const contactIndex = contactItems.findIndex(contact => contact.id === item.id);
+    const contactToEdit = contactItems[contactIndex];
+    const updatedItem = {...contactToEdit, name: item.name, phone: item.phone, email: item.email};
+    let updatedContacts;
+    updatedContacts = [...contactItems];
+    updatedContacts[contactIndex] = updatedItem;
+    setContactItems(prevState => ([...updatedContacts]));
   };
-  const deleteItemHandler = (id) => {};
+
+  const displayItemHandler = (item) => {
+    setDisplayedContact({...item});
+  };
+
+  const deleteItemHandler = (id) => {  
+    let updatedContacts;
+    updatedContacts = contactItems.filter(item => item.id !== id);
+    setContactItems(prevState => ([...updatedContacts]));
+  };
 
   return (
     <ContactsContext.Provider

@@ -7,6 +7,11 @@ import styles from "./ContactView.module.css";
 const ContactView = (props) => {
   const contCtx = useContext(ContactsContext);
 
+  const deleteHandler = () => {
+    contCtx.deleteContact(contCtx.displayedContact.id);
+    props.onClose();
+  }
+
   return (
     <Modal onClose={props.onClose}>
       <h3 className="text-center mt-3 mb-4">Contact Information</h3>
@@ -27,7 +32,7 @@ const ContactView = (props) => {
         </div>
       </div>
       <div className={`mt-5 mb-3 ${styles.actions}`}>
-        <button className={`${styles.delete}`}>Delete</button>
+        <button className={`btn ${styles.delete}`} onClick={deleteHandler}>Delete</button>
         <button className={`btn ${styles.edit}`} onClick={props.onEditContact}>
           Edit
         </button>
