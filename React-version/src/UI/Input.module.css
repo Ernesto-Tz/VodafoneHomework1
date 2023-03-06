@@ -4,9 +4,9 @@
 }
 
 .input input {
-  margin-top: 1.5rem;
-  margin-left: 2rem;
-  width: 28rem;
+  margin: 0.5rem 1rem;
+  width: 20rem;
+  height: 2.5rem;
   border-radius: 5px;
   border: 1px solid #2a2828;
   font: inherit;
