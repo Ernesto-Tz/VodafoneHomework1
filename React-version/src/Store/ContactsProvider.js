@@ -7,7 +7,9 @@ const ContactsProvider = (props) => {
   const [contactItems, setContactItems] = useState(contacts);
   const [displayedContact, setDisplayedContact] = useState({});
 
-  const addItemHandler = (item) => {};
+  const addItemHandler = (item) => {
+    setContactItems(prevState => [...prevState, item]);
+  };
 
   const editItemHandler = (item) => {
     const contactIndex = contactItems.findIndex(contact => contact.id === item.id);
