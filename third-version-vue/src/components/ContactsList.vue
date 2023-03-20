@@ -50,8 +50,6 @@ div {
   width: 40px;
   border-radius: 50%;
   border: none;
-  text-decoration: none;
-  display: inline-block;
   cursor: pointer;
 }
 </style>
