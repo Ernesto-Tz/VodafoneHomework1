@@ -3,9 +3,11 @@ import { useState } from "react";
 import ContactsProvider from "./Store/ContactsProvider";
 import Header from "./Layout/Header/Header";
 import Footer from "./Layout/Footer/Footer";
+import AddButton from "./UI/AddButton";
 import ContactsList from "./Contacts/ContactsList";
 import ContactView from "./Contacts/ContactView/ContactView";
 import EditContact from "./Contacts/EditContact/EditContact";
+import AddContact from './Contacts/AddContact/AddContact'
 
 function App() {
   const [showContactView, setShowContactView] = useState(false);
@@ -34,9 +36,11 @@ function App() {
         />
       )}
       {showEditContact && <EditContact onClose={toggleEditContact} />}
+      {showAddContact && <AddContact onClose={toggleAddContact} />}
       <Header />
       <main>
         <ContactsList contactViewActive={toggleContactView} />
+        <AddButton onClick={toggleAddContact}>+</AddButton>
       </main>
       <Footer />
     </ContactsProvider>
