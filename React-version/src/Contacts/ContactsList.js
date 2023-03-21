@@ -2,7 +2,6 @@ import { useContext } from "react";
 
 import ContactsContext from "../Store/contacts-context.js";
 import ContactItem from "./ContactItem.js";
-// import TitleBar from "../Layout/TitleBar/TitleBar.js";
 import classes from "./ContactsList.module.css";
 
 const ContactsList = (props) => {
@@ -23,7 +22,6 @@ const ContactsList = (props) => {
 
   return (
     <div className={`${classes.container}`}>
-      {/* <TitleBar contacts={contactsCtx.contacts}/> */}
       <div className={`${classes.contacts}`}>
         {list}
       </div>

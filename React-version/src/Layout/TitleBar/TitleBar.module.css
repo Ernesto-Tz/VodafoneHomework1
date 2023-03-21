@@ -1,18 +1,22 @@
-.header-title {
+.container{
+  margin-top: 3rem;
+}
+
+h3 {
   font-size: 40px;
   font-weight: 600;
 }
 .underline-contacts {
   content: "";
   height: 3px;
-  width: 5%;
+  width: 10%;
   background-color: red;
-  margin-left: 48%;
+  margin-left: 45%;
 }
 .filter-table {
   font-size: 30px;
   margin-top: 10px;
-  padding-left: 35%;
+  padding-left: 30%;
   font-weight: 400;
   visibility: visible;
   display: flex;

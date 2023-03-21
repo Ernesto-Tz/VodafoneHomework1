@@ -1,40 +1,49 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import styles from "./TitleBar.module.css";
+import ContactsContext from "../../Store/contacts-context";
 
-const TitleBar = (props) => {
+const TitleBar = () => {
   const [lettersArray, setLettersArray] = useState([]);
+  const contactsCtx = useContext(ContactsContext);
 
   useEffect(() => {
-    // *** TODO: Fix this logic - pushing all elements. 
-    for (const contact of props.contacts) {
-      // if (lettersArray.length === 0) {
-      //   const newVal = contact.name[0].toUpperCase();
-      //   setLettersArray((prevState) => {
-      //     return [...prevState, newVal];
-      //   });
-      // }
-      console.log(lettersArray);
-      if (!lettersArray.includes(contact.name[0].toUpperCase())) {
-        console.log(contact.name);
-        const newVal = contact.name[0].toUpperCase();
-        setLettersArray((prevState) => {
-          return [...prevState, newVal];
-        });
+    // *** TODO: Fix this logic - pushing all elements.
+    const createFilter = () => {
+      for (const contact of contactsCtx.contacts) {
+        // if (lettersArray.length === 0) {
+        //   const newVal = contact.name[0].toUpperCase();
+        //   console.log(newVal);
+        //   setLettersArray((prevState) => {
+        //     return [...prevState, newVal];
+        //   });
+        // }
+        if (!lettersArray.includes(contact.name[0].toUpperCase())) {
+          const newVal = contact.name[0].toUpperCase();
+          console.log(newVal);
+          setLettersArray((prevState) => {
+            return [...prevState, newVal];
+          });
+        }
+        console.log(lettersArray);
       }
-      console.log(lettersArray.length);
-    }
+    };
+    createFilter();
+  }, [contactsCtx.contacts, lettersArray]);
 
-  }, [props.contacts]);
-  
   lettersArray.sort();
-  
-  console.log(lettersArray)
+
+  console.log(lettersArray);
   return (
-    <div>
-      <ul>
+    <div className={`${styles.container}`}>
+      <div className={`${styles.title} text-center`}>
+        <h3>Contacts</h3>
+      </div>
+      <div className={`${styles["underline-contacts"]}`} />
+      <div className={styles['filter-table']}>
         {lettersArray.map((item) => (
-          <li>{item}</li>
+          <div className={styles['filter-element']}>{item}</div>
         ))}
-      </ul>
+      </div>
     </div>
   );
 };

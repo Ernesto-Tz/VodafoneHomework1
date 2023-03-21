@@ -4,10 +4,11 @@ import ContactsProvider from "./Store/ContactsProvider";
 import Header from "./Layout/Header/Header";
 import Footer from "./Layout/Footer/Footer";
 import AddButton from "./UI/AddButton";
+import TitleBar from './Layout/TitleBar/TitleBar'
 import ContactsList from "./Contacts/ContactsList";
 import ContactView from "./Contacts/ContactView/ContactView";
 import EditContact from "./Contacts/EditContact/EditContact";
-import AddContact from './Contacts/AddContact/AddContact'
+import AddContact from "./Contacts/AddContact/AddContact";
 
 function App() {
   const [showContactView, setShowContactView] = useState(false);
@@ -39,6 +40,7 @@ function App() {
       {showAddContact && <AddContact onClose={toggleAddContact} />}
       <Header />
       <main>
+        <TitleBar/>
         <ContactsList contactViewActive={toggleContactView} />
         <AddButton onClick={toggleAddContact}>+</AddButton>
       </main>
