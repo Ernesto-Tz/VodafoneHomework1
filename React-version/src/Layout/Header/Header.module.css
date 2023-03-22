@@ -18,7 +18,6 @@
   position: relative;
   left: 40px;
   bottom: 5px;
-  cursor: pointer;
 }
 
 @media only screen and (max-width: 600px) {
