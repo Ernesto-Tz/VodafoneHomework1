@@ -5,7 +5,7 @@ import classes from "./Input.module.css";
 const Input = React.forwardRef((props, ref) => {
   return (
     <div className={classes.input}>
-      <input ref={ref} {...props.input} />
+      <input ref={ref} onChange={props.onChange} {...props.input} />
     </div>
   );
 });
