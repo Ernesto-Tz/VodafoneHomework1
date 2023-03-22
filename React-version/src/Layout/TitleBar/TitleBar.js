@@ -20,15 +20,38 @@ const TitleBar = () => {
     });
   }, [contactsCtx.contacts]);
 
+  const filterHandler = (event) => {
+    for (const contact of contactsCtx.contacts) {
+      let tempItem = {...contact, showing: false};
+      contactsCtx.editContact(tempItem);
+      if (event.target.textContent === contact.name[0].toUpperCase()) {
+        contactsCtx.editContact({ ...tempItem, showing: true });
+      }
+    }
+  };
+
+  const clearFilter = () => {
+    for (const contact of contactsCtx.contacts) {
+      let tempItem = {...contact, showing: true};
+      contactsCtx.editContact(tempItem);
+    }
+  }
+
   return (
     <div className={`${styles.container}`}>
-      <div className={`${styles.title} text-center`}>
-        <h3>Contacts</h3>
+      <div className={`text-center`}>
+        <span className={styles.title} onClick={clearFilter}>Contacts</span>
       </div>
       <div className={`${styles["underline-contacts"]}`} />
-      <div className={styles["filter-table"]}>
+      <div className={`${styles["filter-table"]}`}>
         {lettersArray.map((item, index) => (
-          <div className={styles["filter-element"]} key={index}>{item}</div>
+          <div
+            className={styles["filter-element"]}
+            key={index}
+            onClick={filterHandler}
+          >
+            {item}
+          </div>
         ))}
       </div>
     </div>
