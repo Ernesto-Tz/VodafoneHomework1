@@ -19,6 +19,7 @@ const ContactView = (props) => {
       name: nameInput.current.value,
       email: emailInput.current.value,
       phone: phoneInput.current.value,
+      showing: true
     };
 
     if (

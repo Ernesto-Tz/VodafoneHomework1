@@ -8,27 +8,36 @@ const ContactsProvider = (props) => {
   const [displayedContact, setDisplayedContact] = useState({});
 
   const addItemHandler = (item) => {
-    setContactItems(prevState => [...prevState, item]);
+    setContactItems((prevState) => [...prevState, item]);
   };
 
   const editItemHandler = (item) => {
-    const contactIndex = contactItems.findIndex(contact => contact.id === item.id);
-    const contactToEdit = contactItems[contactIndex];
-    const updatedItem = {...contactToEdit, name: item.name, phone: item.phone, email: item.email};
-    let updatedContacts;
-    updatedContacts = [...contactItems];
-    updatedContacts[contactIndex] = updatedItem;
-    setContactItems(prevState => ([...updatedContacts]));
+    const updatedItem = {
+      id: item.id,
+      name: item.name,
+      phone: item.phone,
+      email: item.email,
+      showing: item.showing,
+    };
+    setContactItems((prevState) => {
+      const newState = prevState.map((obj) => {
+        if (obj.id === item.id) {
+          return updatedItem;
+        }
+        return obj;
+      });
+      return newState;
+    });
   };
 
   const displayItemHandler = (item) => {
-    setDisplayedContact({...item});
+    setDisplayedContact({ ...item });
   };
 
-  const deleteItemHandler = (id) => {  
+  const deleteItemHandler = (id) => {
     let updatedContacts;
-    updatedContacts = contactItems.filter(item => item.id !== id);
-    setContactItems(prevState => ([...updatedContacts]));
+    updatedContacts = contactItems.filter((item) => item.id !== id);
+    setContactItems((prevState) => [...updatedContacts]);
   };
 
   return (
@@ -39,7 +48,7 @@ const ContactsProvider = (props) => {
         addContact: addItemHandler,
         editContact: editItemHandler,
         deleteContact: deleteItemHandler,
-        displayItem: displayItemHandler
+        displayItem: displayItemHandler,
       }}
     >
       {props.children}
